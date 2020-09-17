@@ -10,11 +10,7 @@ class MyApp extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       title: 'Material App',
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('Material App Bar'),
-          ),
-          body: AuthScreen()),
+      home: Scaffold(body: AuthScreen()),
     );
   }
 }
