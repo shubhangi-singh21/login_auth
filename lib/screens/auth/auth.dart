@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:login_page_auth/screens/auth/sign_in.dart';
 import 'package:login_page_auth/screens/background_painter.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -21,27 +23,28 @@ class _AuthScreenState extends State<AuthScreen>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox.expand(
-            child: CustomPaint(
-              painter: BackgroundPainter(
-                animation: _controller.view,
+    return LitAuth.custom(
+      child: Scaffold(
+        body: Stack(
+          children: [
+            SizedBox.expand(
+              child: CustomPaint(
+                painter: BackgroundPainter(
+                  animation: _controller.view,
+                ),
               ),
             ),
-          ),
-          Center(
-            child: RaisedButton(
-              onPressed: () {
-                _controller.forward(from: 0);
-              },
-              child: Text('Animate'),
-            ),
-          )
-        ],
+            SignIn(),
+          ],
+        ),
       ),
     );
   }
