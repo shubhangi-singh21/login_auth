@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:login_page_auth/screens/auth/register.dart';
 import 'package:login_page_auth/screens/auth/sign_in.dart';
 import 'package:login_page_auth/screens/background_painter.dart';
 
@@ -13,6 +14,7 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
+  ValueNotifier<bool> showSignInPage = ValueNotifier<bool>(true);
 
   @override
   void initState() {
@@ -42,7 +44,12 @@ class _AuthScreenState extends State<AuthScreen>
                 ),
               ),
             ),
-            SignIn(),
+            ValueListenableBuilder<bool>(
+              valueListenable: showSignInPage,
+              builder: (context, value, child) {
+                return value ? SignIn() : Register();
+              },
+            ),
           ],
         ),
       ),

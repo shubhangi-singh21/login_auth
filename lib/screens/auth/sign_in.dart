@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:login_page_auth/screens/auth/decoration_function.dart';
@@ -6,7 +8,9 @@ import 'package:login_page_auth/screens/auth/sign_in_up_bar.dart';
 import 'package:login_page_auth/screens/auth/title.dart';
 
 class SignIn extends StatelessWidget {
-  const SignIn({Key key}) : super(key: key);
+  const SignIn({Key key, @required this.onRegisterClicked}) : super(key: key);
+
+  final VoidCallback onRegisterClicked;
 
   @override
   Widget build(BuildContext context) {
