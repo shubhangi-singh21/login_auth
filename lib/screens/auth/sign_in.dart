@@ -10,6 +10,7 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSubmitting = context.isSubmitting();
     return SignInForm(
       child: Padding(
         padding: const EdgeInsets.all(32.0),
@@ -41,9 +42,11 @@ class SignIn extends StatelessWidget {
                     ),
                   ),
                   SignInBar(
-                    isLoading: true,
+                    isLoading: isSubmitting,
                     label: 'Sign In',
-                    onPressed: () {},
+                    onPressed: () {
+                      context.signInWithEmailAndPassword();
+                    },
                   )
                 ],
               ),
