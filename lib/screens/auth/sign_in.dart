@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:login_page_auth/config/palette.dart';
 import 'package:login_page_auth/screens/auth/decoration_function.dart';
 import 'package:login_page_auth/screens/auth/sign_in_up_bar.dart';
 //import 'package:lit_firebase_auth_ui_demo/screens/auth/title.dart';
@@ -51,7 +52,24 @@ class SignIn extends StatelessWidget {
                     onPressed: () {
                       context.signInWithEmailAndPassword();
                     },
-                  )
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: InkWell(
+                      splashColor: Colors.white,
+                      onTap: () {
+                        onRegisterClicked?.call();
+                      },
+                      child: const Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontSize: 16,
+                          decoration: TextDecoration.underline,
+                          color: Palette.darkBlue,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

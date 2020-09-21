@@ -44,11 +44,30 @@ class _AuthScreenState extends State<AuthScreen>
                 ),
               ),
             ),
-            ValueListenableBuilder<bool>(
-              valueListenable: showSignInPage,
-              builder: (context, value, child) {
-                return value ? SignIn() : Register();
-              },
+            Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 800),
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: showSignInPage,
+                  builder: (context, value, child) {
+                    return value
+                        ? SignIn(
+                            onRegisterClicked: () {
+                              context.resetSignInForm();
+                              showSignInPage.value = false;
+                              _controller.forward();
+                            },
+                          )
+                        : Register(
+                            onSignInPressed: () {
+                              context.resetSignInForm();
+                              showSignInPage.value = true;
+                              _controller.reverse();
+                            },
+                          );
+                  },
+                ),
+              ),
             ),
           ],
         ),
