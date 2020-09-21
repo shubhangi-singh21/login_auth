@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animations/animations.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:login_page_auth/screens/auth/register.dart';
 import 'package:login_page_auth/screens/auth/sign_in.dart';
@@ -50,25 +51,38 @@ class _AuthScreenState extends State<AuthScreen>
                 child: ValueListenableBuilder<bool>(
                   valueListenable: showSignInPage,
                   builder: (context, value, child) {
-                    return value
-                        ? SignIn(
-                            onRegisterClicked: () {
-                              context.resetSignInForm();
-                              showSignInPage.value = false;
-                              _controller.forward();
-                            },
-                          )
-                        : Register(
-                            onSignInPressed: () {
-                              context.resetSignInForm();
-                              showSignInPage.value = true;
-                              _controller.reverse();
-                            },
-                          );
+                    return PageTransitionSwitcher(
+                      duration: Duration(milliseconds: 800),
+                      transitionBuilder:
+                          (child, animation, secondaryAnimation) {
+                        return SharedAxisTransition(
+                          animation: animation,
+                          secondaryAnimation: secondaryAnimation,
+                          transitionType: SharedAxisTransitionType.vertical,
+                          fillColor: Colors.transparent,
+                          child: child,
+                        );
+                      },
+                      child: value
+                          ? SignIn(
+                              onRegisterClicked: () {
+                                context.resetSignInForm();
+                                showSignInPage.value = false;
+                                _controller.forward();
+                              },
+                            )
+                          : Register(
+                              onSignInPressed: () {
+                                context.resetSignInForm();
+                                showSignInPage.value = true;
+                                _controller.reverse();
+                              },
+                            ),
+                    );
                   },
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
