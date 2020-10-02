@@ -4,6 +4,7 @@ import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:login_page_auth/config/palette.dart';
 import 'package:login_page_auth/main.dart';
 import 'package:login_page_auth/screens/auth/auth.dart';
+import 'package:login_page_auth/screens/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
             color: Palette.darkBlue,
           ),
         ),
-        home: AuthScreen(),
+        home: LitAuthState(
+            authenticated: HomeScreen(), unauthenticated: AuthScreen()),
       ),
     );
   }

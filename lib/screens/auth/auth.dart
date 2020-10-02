@@ -52,6 +52,7 @@ class _AuthScreenState extends State<AuthScreen>
                   valueListenable: showSignInPage,
                   builder: (context, value, child) {
                     return PageTransitionSwitcher(
+                      reverse: !value,
                       duration: Duration(milliseconds: 800),
                       transitionBuilder:
                           (child, animation, secondaryAnimation) {
@@ -65,6 +66,7 @@ class _AuthScreenState extends State<AuthScreen>
                       },
                       child: value
                           ? SignIn(
+                              key: ValueKey('SignIn'),
                               onRegisterClicked: () {
                                 context.resetSignInForm();
                                 showSignInPage.value = false;
@@ -72,6 +74,7 @@ class _AuthScreenState extends State<AuthScreen>
                               },
                             )
                           : Register(
+                              key: ValueKey('Register'),
                               onSignInPressed: () {
                                 context.resetSignInForm();
                                 showSignInPage.value = true;
