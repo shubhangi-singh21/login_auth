@@ -1,11 +1,8 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:login_page_auth/config/palette.dart';
 import 'package:login_page_auth/screens/auth/decoration_function.dart';
 import 'package:login_page_auth/screens/auth/sign_in_up_bar.dart';
-//import 'package:lit_firebase_auth_ui_demo/screens/auth/title.dart';
 import 'package:login_page_auth/screens/auth/title.dart';
 
 class SignIn extends StatelessWidget {

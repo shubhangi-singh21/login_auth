@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
-
-import 'decoration_functions.dart';
+import 'decoration_function.dart';
 import 'sign_in_up_bar.dart';
 import 'title.dart';
 

@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'package:login_page_auth/config/palette.dart';
 import 'package:login_page_auth/screens/auth/register.dart';
 import 'package:login_page_auth/screens/auth/sign_in.dart';
 import 'package:login_page_auth/screens/background_painter.dart';
@@ -42,6 +41,14 @@ class _AuthScreenState extends State<AuthScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: LitAuth.custom(
+        errorNotification: const NotificationConfig(
+          backgroundColor: Palette.darkBlue,
+          icon: Icon(
+            Icons.error_outline,
+            color: Colors.orange,
+            size: 32,
+          ),
+        ),
         onAuthSuccess: () {
           Navigator.of(context).pushReplacement(HomeScreen.route);
         },
