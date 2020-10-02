@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         child: RaisedButton(
           onPressed: () {
             context.signOut();
-            //Navigator.of(context).push(AuthScreen.route);
+            Navigator.of(context).push(AuthScreen.route);
           },
           child: const Text('Sign out'),
         ),

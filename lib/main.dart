@@ -5,6 +5,7 @@ import 'package:login_page_auth/config/palette.dart';
 import 'package:login_page_auth/main.dart';
 import 'package:login_page_auth/screens/auth/auth.dart';
 import 'package:login_page_auth/screens/home.dart';
+import 'package:login_page_auth/screens/splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,8 +24,9 @@ class MyApp extends StatelessWidget {
             color: Palette.darkBlue,
           ),
         ),
-        home: LitAuthState(
-            authenticated: HomeScreen(), unauthenticated: AuthScreen()),
+        //home: LitAuthState(
+        //authenticated: HomeScreen(), unauthenticated: AuthScreen(),),
+        home: SplashScreen(),
       ),
     );
   }

@@ -1,11 +1,18 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:login_page_auth/screens/auth/register.dart';
 import 'package:login_page_auth/screens/auth/sign_in.dart';
 import 'package:login_page_auth/screens/background_painter.dart';
+import 'package:login_page_auth/screens/home.dart';
 
 class AuthScreen extends StatefulWidget {
+  static MaterialPageRoute get route => MaterialPageRoute(
+        builder: (context) => const AuthScreen(),
+      );
+
   const AuthScreen({Key key}) : super(key: key);
 
   @override
@@ -33,10 +40,12 @@ class _AuthScreenState extends State<AuthScreen>
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return LitAuth.custom(
-      child: Scaffold(
-        body: Stack(
+    return Scaffold(
+      body: LitAuth.custom(
+        onAuthSuccess: () {
+          Navigator.of(context).pushReplacement(HomeScreen.route);
+        },
+        child: Stack(
           children: [
             SizedBox.expand(
               child: CustomPaint(
