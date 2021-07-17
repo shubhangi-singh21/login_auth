@@ -1,6 +1,5 @@
 # Sign-in Form using Lit Firebase Auth 📂
 
-(not complete yet)
 
 ____
 
